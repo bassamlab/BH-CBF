@@ -1,2 +1,6 @@
 # BH-CBF
-Project page of "Safeguarding Learning-Enabled Connected Vehicles with Recursively Feasible Control Barrier Functions" (BH-CBF): video demos and code
+
+Project page of the paper "Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions" (BH-CBF).
+
+- Project page: https://bassamlab.github.io/BH-CBF
+- Code: https://github.com/bassamlab/SigmaRL

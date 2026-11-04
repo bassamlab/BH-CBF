@@ -32,6 +32,9 @@
   .btn { display: inline-block; padding: 7px 18px; border-radius: 999px; border: 1px solid var(--blue);
          background: var(--blue); color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
   .btn:hover { background: var(--blue-dark); }
+  pre.bibtex { background: var(--blue-10); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px;
+              overflow-x: auto; font-size: 0.85rem; line-height: 1.5; }
+  .btn .ai { margin-right: 4px; }
   .btn.off { background: var(--blue-10); color: var(--muted); border-color: var(--blue-25); cursor: default; }
   video, img { display: block; width: 100%; height: auto; }
   .frame { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
@@ -48,6 +51,7 @@
     .abstract { text-align: left; }
   }
 </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 </head>
 <body>
 <main>
@@ -57,7 +61,7 @@
     <p class="affil"><sup>1</sup>Department of Computer Science, RWTH Aachen University, Germany</p>
     <p class="affil"><sup>2</sup>Department of Aerospace Engineering, University of the Bundeswehr Munich, Germany</p>
     <div class="buttons">
-      <span class="btn off">Paper (coming soon)</span>
+      <a class="btn" href="https://arxiv.org/abs/2611.04957" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i> arXiv</a>
       <a class="btn" href="#video">Video</a>
       <a class="btn" href="https://github.com/bassamlab/SigmaRL/tree/1.7.0" target="_blank" rel="noopener">Code</a>
     </div>
@@ -133,6 +137,16 @@
   <section id="code">
     <h2>Code</h2>
     <p>The code that reproduces our evaluation results is available in <a href="https://github.com/bassamlab/SigmaRL/tree/1.7.0" target="_blank" rel="noopener">SigmaRL</a> (tag 1.7.0), our open-source framework for MARL of connected and automated vehicles. See <a href="https://github.com/bassamlab/SigmaRL/tree/1.7.0/sigmarl/evaluation_tits26" target="_blank" rel="noopener">sigmarl/evaluation_tits26</a> for the scripts of each evaluation stage and the trained models.</p>
+  </section>
+
+  <section id="citation">
+    <h2>Citation</h2>
+<pre class="bibtex">@article{xu2026safeguarding,
+  title   = {Safeguarding Multi-Agent Reinforcement Learning for Connected and Automated Vehicles with Recursively Feasible Control Barrier Functions},
+  author  = {Xu, Jianye and Sayed, Yousef and Alrifaee, Bassam},
+  journal = {arXiv preprint arXiv:2611.04957},
+  year    = {2026}
+}</pre>
   </section>
 </main>
 

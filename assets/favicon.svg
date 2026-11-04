@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- A roundabout with four arms on an RWTH-blue tile; two vehicles drive counterclockwise,
+       each with its light braking trail ahead until standstill, as in BH-CBF. The vehicles
+       (10 x 6) and trails (6 wide) stay inside the ring road (radius 18, 10 wide) -->
+  <rect width="64" height="64" rx="14" fill="#00549F"/>
+  <g opacity="0.24" fill="none" stroke="#FFFFFF" stroke-width="10">
+    <circle cx="32" cy="32" r="18"/>
+    <path d="M 32 0 V 14 M 32 50 V 64 M 0 32 H 14 M 50 32 H 64"/>
+  </g>
+  <path d="M 44.7 19.3 A 18 18 0 0 0 29.5 14.2" fill="none" stroke="#8EBAE5" stroke-width="6"/>
+  <path d="M 19.3 44.7 A 18 18 0 0 0 34.5 49.8" fill="none" stroke="#8EBAE5" stroke-width="6"/>
+  <rect x="42.6" y="20" width="10" height="6" rx="1.2" fill="#FFFFFF" transform="rotate(60 47.6 23)"/>
+  <rect x="11.4" y="38" width="10" height="6" rx="1.2" fill="#FFFFFF" transform="rotate(60 16.4 41)"/>
+</svg>

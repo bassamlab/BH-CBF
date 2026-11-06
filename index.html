@@ -211,8 +211,8 @@
 
     // A looping clip plays only while it is visible and the viewer has not paused it;
     // if the browser blocks playback, the clip shows its controls (or its button offers play)
-    function loop(video, watched, button) {
-      var paused = reduce;
+    function loop(video, watched, button, startPaused) {
+      var paused = startPaused;
       watched._visible = !observer;
       function label() {
         if (!button) return;
@@ -241,15 +241,16 @@
     document.querySelectorAll("main .frame > video[autoplay]").forEach(function (v) {
       v.removeAttribute("autoplay");
       if (reduce) v.controls = true;
-      loop(v, v);
+      loop(v, v, null, reduce);
     });
 
-    // Header background: a moving loop on wide screens only; elsewhere its first frame
+    // Header background: a moving loop on wide screens only, also with reduced motion
+    // (its button pauses it); elsewhere its first frame
     var hero = document.querySelector(".hero"), heroVideo = hero.querySelector(".hero-bg");
-    if (!reduce && window.matchMedia("(min-width: 641px)").matches) {
+    if (window.matchMedia("(min-width: 641px)").matches) {
       heroVideo.src = heroVideo.getAttribute("data-src");
       heroVideo.preload = "auto";
-      loop(heroVideo, hero, hero.querySelector(".pp"));
+      loop(heroVideo, hero, hero.querySelector(".pp"), false);
     }
 
     // Copy the BibTeX entry

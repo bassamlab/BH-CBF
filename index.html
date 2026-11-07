@@ -40,13 +40,10 @@
   .hero-inner { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 72px 16px 76px; }
   .authors { font-size: 1.15rem; margin: 0 0 6px; }
   .affil { color: var(--muted); font-size: 0.95rem; margin: 0; }
-  .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px 0 0; }
-  .btn { display: inline-block; padding: 7px 18px; border-radius: 999px; border: 1px solid var(--blue);
-         background: var(--blue); color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
-  .btn:hover { background: var(--blue-dark); }
-  .btn .ai { margin-right: 4px; }
-  .btn-arxiv { background: #B31B1B; border-color: #B31B1B; }
-  .btn-arxiv:hover { background: #8E1515; }
+  .links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 28px; margin: 24px 0 0; font-size: 1.05rem; }
+  .links a { display: inline-flex; align-items: center; gap: 6px; color: var(--blue); text-decoration: none; }
+  .links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .links svg { width: 1em; height: 1em; fill: currentColor; }
 
   /* Small pause/play control of an autoplaying loop */
   .pp { position: absolute; right: 16px; bottom: 24px; z-index: 2; width: 30px; height: 30px; padding: 0;
@@ -56,11 +53,11 @@
   .pp:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
   /* Key numbers */
-  .numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; }
-  .numbers div { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; text-align: center; }
-  .numbers dt { font-size: 1.9rem; font-weight: 700; line-height: 1.2; color: var(--blue); }
-  .numbers dt.word { font-size: 1.45rem; line-height: 1.57; }
-  .numbers dd { margin: 4px 0 0; font-size: 0.88rem; line-height: 1.4; color: var(--muted); }
+  .numbers { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 4px 0; text-align: center; }
+  .numbers div { padding: 2px 18px; }
+  .numbers div + div { border-left: 1px solid var(--line); }
+  .numbers dt { font-size: 1.35rem; font-weight: 700; line-height: 1.3; color: var(--blue); white-space: nowrap; }
+  .numbers dd { margin: 2px 0 0; font-size: 0.9rem; line-height: 1.4; color: var(--muted); }
 
   .frame { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
   figure { margin: 18px 0 0; }
@@ -85,6 +82,8 @@
     h1 { font-size: 1.45rem; }
     .grid2 { grid-template-columns: 1fr; }
     .numbers { grid-template-columns: 1fr; }
+    .numbers div { padding: 10px 0; }
+    .numbers div + div { border-left: 0; border-top: 1px solid var(--line); }
     .pp { display: none; }
     .abstract { text-align: left; }
   }
@@ -99,20 +98,20 @@
     <p class="authors">Jianye Xu<sup>1</sup>, Yousef Sayed<sup>2</sup>, Bassam Alrifaee<sup>2</sup></p>
     <p class="affil"><sup>1</sup>Department of Computer Science, RWTH Aachen University, Germany</p>
     <p class="affil"><sup>2</sup>Department of Aerospace Engineering, University of the Bundeswehr Munich, Germany</p>
-    <div class="buttons">
-      <a class="btn btn-arxiv" href="https://arxiv.org/abs/2611.04957" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i> arXiv</a>
-      <a class="btn" href="#video">Video</a>
-      <a class="btn" href="https://github.com/bassamlab/SigmaRL/tree/1.7.0" target="_blank" rel="noopener">Code</a>
-    </div>
+    <nav class="links">
+      <a href="https://arxiv.org/abs/2611.04957" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i>Paper</a>
+      <a href="#video"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Video</a>
+      <a href="https://github.com/bassamlab/SigmaRL/tree/1.7.0" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+    </nav>
     <button class="pp" type="button" hidden aria-label="Pause the background animation">&#10074;&#10074;</button>
   </div>
 </header>
 
 <main>
   <dl class="numbers">
-    <div><dt>0</dt><dd>collisions with our BH-CBF filter, in simulation and in recorded traffic</dd></div>
-    <div><dt>14%</dt><dd>shorter median travel time than human drivers in recorded rounD traffic (1264&nbsp;vehicles, 115&nbsp;km)</dd></div>
-    <div><dt class="word">Decentralized</dt><dd>one broadcast of vehicle states and routes per step, real time in dense traffic</dd></div>
+    <div><dt>0 collisions</dt><dd>in simulation and recorded traffic</dd></div>
+    <div><dt>&minus;14% travel time</dt><dd>median vs. human drivers in rounD (1264&nbsp;vehicles, 115&nbsp;km)</dd></div>
+    <div><dt>1 broadcast per step</dt><dd>fully decentralized, real time</dd></div>
   </dl>
 
   <section id="video">
@@ -140,6 +139,17 @@
       </div>
       <figcaption>An unsafe MARL policy safeguarded by our BH-CBF filter on a roundabout (left) and an intersection (right). Light trails: predictions of braking to a standstill along the route. Real time.</figcaption>
     </figure>
+  </section>
+
+  <section id="explainer">
+    <h2>How the Filter Works</h2>
+    <p>This video steps through the filter problem of one vehicle at one step. It first shows the backup prediction and the BH-CBF condition, then the quadratic program over the vehicle's controls and why it stays feasible at every step. Finally, it shows how two vehicles split their pair constraints without negotiating.</p>
+    <div class="frame">
+      <video controls preload="metadata" playsinline poster="assets/video/bh_cbf_explainer.jpg">
+        <source src="assets/video/bh_cbf_explainer.mp4" type="video/mp4">
+        Your browser cannot play this video. <a href="assets/video/bh_cbf_explainer.mp4">Download it</a> instead.
+      </video>
+    </div>
   </section>
 
   <section id="results">

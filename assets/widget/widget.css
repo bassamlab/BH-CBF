@@ -1,0 +1,73 @@
+/* Interactive BH-CBF widget (widget.js) */
+.bw { --bw-purple: #7A6FAC; --bw-red: #CC071E; --bw-gray: #8C8C8C; --bw-turq: #0098A1;
+      border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-top: 14px; outline: none; }
+.bw:focus-visible { box-shadow: 0 0 0 2px var(--blue-50); }
+.bw-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-bottom: 10px; font-size: 0.9rem; }
+.bw-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.bw-group > span { color: var(--muted); }
+.bw-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.bw-seg button { border: 0; background: #fff; color: var(--text); padding: 4px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
+.bw-seg button + button { border-left: 1px solid var(--line); }
+.bw-seg button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.bw-seg button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.bw-main { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 12px; }
+.bw-map { position: relative; }
+.bw-zoom { position: absolute; top: 8px; right: 8px; display: flex; flex-direction: column; gap: 4px; }
+.bw-zoom button { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 6px; background: rgba(255,255,255,0.92);
+                  font: inherit; font-size: 1.1rem; line-height: 1; color: var(--text); cursor: pointer; }
+.bw-zoom button:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+.bw input[type="range"] { width: 120px; accent-color: var(--blue); }
+.bw-value { min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.bw canvas { display: block; box-sizing: border-box; width: 100%; border: 1px solid var(--line); border-radius: 6px; background: #fff; touch-action: none; }
+.bw-map canvas { aspect-ratio: 1 / 1; }
+/* The two panels share the height of the map column */
+.bw-side { display: flex; flex-direction: column; gap: 12px; }
+.bw-panel { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.bw-fill { position: relative; flex: 1; min-height: 130px; }
+.bw-fill-plane { flex: 1.2; }
+.bw-fill canvas { position: absolute; inset: 0; height: 100%; }
+.bw-plane { cursor: crosshair; }
+.bw-title span { white-space: nowrap; }
+.bw-title { font-size: 0.82rem; color: var(--muted); margin: 0 0 4px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; align-items: baseline; }
+.bw-title .bw-hint { font-size: 0.76rem; font-style: italic; }
+.bw-overlay { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 14%; pointer-events: none; }
+.bw-card { pointer-events: auto; max-width: 78%; background: rgba(255,255,255,0.94); border: 1px solid var(--line); border-radius: 8px;
+           padding: 12px 16px; text-align: center; font-size: 0.92rem; line-height: 1.5; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.bw-card strong { display: block; font-size: 1.02rem; margin-bottom: 4px; }
+.bw-card.bad strong { color: var(--bw-red); }
+.bw-card.good strong { color: var(--blue); }
+.bw-card-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+.bw-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.bw-btn { border: 1px solid var(--blue); background: var(--blue); color: #fff; border-radius: 999px; padding: 5px 14px;
+          font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+.bw-btn.ghost { background: #fff; color: var(--blue); }
+.bw-btn:disabled { opacity: 0.45; cursor: default; }
+.bw-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.bw-keys { color: var(--muted); font-size: 0.82rem; margin: -2px 0 8px; }
+.bw-legend .bw-line { margin-right: 5px; vertical-align: -0.5px; }
+.bw kbd { font: inherit; font-size: 0.78rem; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: #fafafa; }
+.bw-pad { display: none; gap: 8px; justify-content: center; margin-top: 10px; user-select: none; -webkit-user-select: none; }
+.bw-pad button { width: 58px; height: 46px; border: 1px solid var(--line); border-radius: 10px; background: #fff; font-size: 1.15rem;
+                 color: var(--text); touch-action: none; -webkit-tap-highlight-color: transparent; }
+.bw-pad button.on { background: var(--blue-10); border-color: var(--blue-50); }
+.bw-status { margin-top: 10px; font-size: 0.9rem; line-height: 1.5; min-height: 3em; }
+.bw-status .tag { display: inline-block; font-size: 0.78rem; font-weight: 700; border-radius: 4px; padding: 0 6px; margin-right: 6px; color: #fff; }
+.bw-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+.bw-legend sub { font-size: 0.75em; }
+.bw-legend i { display: inline-block; width: 14px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: 0; }
+.bw-note { font-size: 0.88rem; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+@media (max-width: 760px) {
+  .bw { padding: 8px; }
+  .bw-main { grid-template-columns: 1fr; }
+  .bw-panel { flex: none; }
+  .bw-fill { flex: none; height: 230px; }
+  .bw-fill-plane { height: 250px; }
+  .bw-keys { display: none; }
+  .bw-pad { display: flex; }
+  /* Pad, buttons, and status right under the map, then the two panels */
+  .bw { display: flex; flex-direction: column; }
+  .bw-main, .bw-left { display: contents; }
+  .bw-pad { order: 1; } .bw-controls { order: 2; } .bw-status { order: 3; } .bw-map-legend { order: 4; }
+  .bw-side { order: 5; margin-top: 12px; }
+}
+@media (hover: none) { .bw-pad { display: flex; } .bw-keys { display: none; } }

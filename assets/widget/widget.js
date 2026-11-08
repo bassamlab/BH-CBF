@@ -13,7 +13,7 @@ const COLOR = {
   road: "#ECECEC", roadEdge: "#A0A4A8", boundary: "#3C4043", box: "#F4F4F4",
 };
 const FILTER_NAMES = { off: "No Filter", "one-step": "One-Step CBF", bh: "BH-CBF" };
-const FILTER_BUTTONS = { ...FILTER_NAMES, bh: "BH-CBF (Ours)" };
+const FILTER_BUTTONS = { off: "No Filter (Unsafe)", "one-step": "One-Step CBF (Unsafe)", bh: "BH-CBF (Ours)" };
 // Station [m] of the stopped vehicle on the route (in the exit lane)
 const OBSTACLE_STATION = 130;
 const DRIVE_GRID = 21; // Grid points per control while driving
@@ -167,7 +167,7 @@ class Widget {
     this.playButton = el("button", { class: "bw-btn", type: "button" });
     this.restartButton = el("button", { class: "bw-btn ghost", type: "button", text: "Restart" });
     const keys = el("div", { class: "bw-keys", html:
-      "<kbd>↑</kbd> speed up · <kbd>↓</kbd> brake · <kbd>←</kbd> <kbd>→</kbd> steer · <kbd>Space</kbd> pause · <kbd>R</kbd> restart" });
+      "<span><kbd>↑</kbd> speed up</span><span><kbd>↓</kbd> brake</span><span><kbd>←</kbd> <kbd>→</kbd> steer</span><span><kbd>Space</kbd> pause</span><span><kbd>R</kbd> restart</span>" });
     const controls = el("div", { class: "bw-controls" }, [this.playButton, this.restartButton]);
     this.pad = el("div", { class: "bw-pad" });
     for (const [key, text, label] of [["left", "◀", "Steer left"], ["up", "▲", "Speed up"], ["down", "▼", "Brake"], ["right", "▶", "Steer right"]]) {
@@ -555,7 +555,7 @@ class Widget {
     ctx.textAlign = "left";
     ctx.font = "600 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
     const speedText = `${(this.sim.x[3] * 3.6).toFixed(0)} km/h`;
-    box(ctx, `${FILTER_NAMES[this.sim.mode]} · ${speedText} · step ${this.sim.k}`, 10, 10);
+    box(ctx, `${FILTER_NAMES[this.sim.mode]}, ${speedText}, step ${this.sim.k}`, 10, 10);
   }
 
   /** The control plane: acceleration (horizontal) and steering rate

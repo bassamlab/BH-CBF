@@ -43,7 +43,7 @@
 .bw-btn.ghost { background: #fff; color: var(--blue); }
 .bw-btn:disabled { opacity: 0.45; cursor: default; }
 .bw-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-.bw-keys { color: var(--muted); font-size: 0.82rem; margin: -2px 0 8px; }
+.bw-keys { display: flex; flex-wrap: wrap; gap: 2px 18px; color: var(--muted); font-size: 0.82rem; margin: -2px 0 8px; }
 .bw-legend .bw-line { margin-right: 5px; vertical-align: -0.5px; }
 .bw kbd { font: inherit; font-size: 0.78rem; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: #fafafa; }
 .bw-pad { display: none; gap: 8px; justify-content: center; margin-top: 10px; user-select: none; -webkit-user-select: none; }
